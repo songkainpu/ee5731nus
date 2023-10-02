@@ -89,9 +89,9 @@ def getDoG(img,n,sigma0,S = None,O = None):
             dim = int(6*sigma[i][j] + 1)
             if dim % 2 == 0:
                 dim += 1
-            GuassianPyramid[-1].append(convolve(GuassianKernel(sigma[i][j], dim),samplePyramid[i],[dim//2,dim//2,dim//2,dim//2],[1,1]))
+            GuassianPyramid[-1].append(convolve(
+                GuassianKernel(sigma[i][j], dim),samplePyramid[i],[dim//2,dim//2,dim//2,dim//2],[1,1]))
     DoG = [[GuassianPyramid[o][s+1] - GuassianPyramid[o][s] for s in range(S - 1)] for o in range(O)]
-
 
     return DoG,GuassianPyramid
 
@@ -455,7 +455,7 @@ def SIFT(img,showDoGimgs = False):
     sigma0 = np.sqrt(SIFT_SIGMA**2-SIFT_INIT_SIGMA**2)
 
     n = 3
-
+    # n 就是 num_features
     DoG,GuassianPyramid = getDoG(img, n,sigma0)
     if showDoGimgs:
         for i in DoG:
