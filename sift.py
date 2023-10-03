@@ -188,10 +188,14 @@ def GetMainDirection(img,r,c,radius,sigma,BinNum):
     # 图像梯度直方图统计的像素范围
     k = 0
     for i in range(-radius,radius+1):
+        # x是 i
+        # y 是 j
+        # r = 图像的 i
         y = r + i
         if y <= 0 or y >= img.shape[0] - 1:
             continue
         for j in range(-radius,radius+1):
+            # c是 j
             x = c + j
             if x <= 0 or x >= img.shape[1] - 1:
                 continue
@@ -221,7 +225,7 @@ def GetMainDirection(img,r,c,radius,sigma,BinNum):
         if bin < 0:
             bin += BinNum
         temphist[bin] += W[k] * Mag[k]
-
+    #TODO: 这两步骤用于平滑histogram 矩阵
     # smooth the histogram
     # 高斯平滑
     temp = [temphist[BinNum - 1], temphist[BinNum - 2], temphist[0], temphist[1]]
