@@ -247,7 +247,7 @@ def LocateKeyPoint(DoG,sigma,GuassianPyramid,n,BinNum = 36,contrastThreshold = 0
     SIFT_INT_DESCR_FCTR = 512.0
     # SIFT_FIXPT_SCALE = 48
     SIFT_FIXPT_SCALE = 1
-
+    # n 就是 num_features
     KeyPoints = []
     O = len(DoG)
     S = len(DoG[0])
